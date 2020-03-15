@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Sm4sh</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_intro_fragment_message">Access our\nextended Catalog</string>
+    <string name="walkthrough_button_text_next">Next</string>
+    <string name="walkthrough_button_text_start">Get Started</string>
+    <string name="third_intro_fragment_message">Real-time\nupdates</string>
+    <string name="second_intro_fragment_message">Know the title\nis worth gaming</string>
+
 </resources>
