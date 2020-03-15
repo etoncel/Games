@@ -7,6 +7,38 @@
     android:orientation="vertical"
     tools:context=".ui.GamesFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/gamesToolbar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimaryDark">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/games_toolbar_title"
+                app:fontFamily="@font/helvetica_neue"
+                android:layout_gravity="center|start"
+                android:textColor="@android:color/black"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/menu_bar_icon"
+                android:background="@android:color/transparent"
+                />
+        </FrameLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/games_list_recyclerView"

@@ -19,8 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardElevation="1dp"
-        app:outlineAmbientShadowColor="@color/colorGameCardColorBorder"
-        app:outlineSpotShadowColor="@color/colorGameCardColorBorder"
         app:strokeColor="@color/colorGameCardColorBorder"
         app:strokeWidth="1dp">
 
