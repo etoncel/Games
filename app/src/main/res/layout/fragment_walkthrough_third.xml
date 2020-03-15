@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/first_intro_fragment_message"
+        android:text="@string/third_intro_fragment_message"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:gravity="center"
