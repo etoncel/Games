@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/walkThroughFragmentFirst">
+    <fragment
+        android:id="@+id/walkThroughFragmentFirst"
+        android:name="com.example.sm4sh.ui.intro_walkthrough.WalkThroughFragmentFirst"
+        android:label="fragment_walkthrough_first"
+        tools:layout="@layout/fragment_walkthrough_first">
+        <action
+            android:id="@+id/action_walkThroughFragmentFirst2_to_walkThroughFragmentSecond"
+            app:destination="@id/walkThroughFragmentSecond" />
+    </fragment>
+    <fragment
+        android:id="@+id/walkThroughFragmentSecond"
+        android:name="com.example.sm4sh.ui.intro_walkthrough.WalkThroughFragmentSecond"
+        android:label="fragment_walkthrough_second"
+        tools:layout="@layout/fragment_walkthrough_second" >
+        <action
+            android:id="@+id/action_walkThroughFragmentSecond_to_walkThroughFragmentThird"
+            app:destination="@id/walkThroughFragmentThird" />
+    </fragment>
+    <fragment
+        android:id="@+id/walkThroughFragmentThird"
+        android:name="com.example.sm4sh.ui.intro_walkthrough.WalkThroughFragmentThird"
+        android:label="fragment_walkthrough_third"
+        tools:layout="@layout/fragment_walkthrough_third" />
+</navigation>
