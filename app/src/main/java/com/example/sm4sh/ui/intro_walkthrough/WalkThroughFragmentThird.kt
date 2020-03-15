@@ -8,9 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.sm4sh.R
+import com.example.sm4sh.domain.WalkThroughUseCase
+import kotlinx.android.synthetic.main.fragment_walkthrough_third.*
 
 
 class WalkThroughFragmentThird : Fragment() {
+
+
+    private val walkThroughUseCase = WalkThroughUseCase()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,5 +25,12 @@ class WalkThroughFragmentThird : Fragment() {
         return inflater.inflate(R.layout.fragment_walkthrough_third, container, false)
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        walkThroughFragmentThirdStartButton.setOnClickListener{
+            walkThroughUseCase.goToGames(this)
+        }
+    }
 
 }

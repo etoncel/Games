@@ -26,5 +26,14 @@
         android:id="@+id/walkThroughFragmentThird"
         android:name="com.example.sm4sh.ui.intro_walkthrough.WalkThroughFragmentThird"
         android:label="fragment_walkthrough_third"
-        tools:layout="@layout/fragment_walkthrough_third" />
+        tools:layout="@layout/fragment_walkthrough_third" >
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/gamesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="com.example.sm4sh.ui.GamesFragment"
+        android:label="fragment_games"
+        tools:layout="@layout/fragment_games" />
 </navigation>

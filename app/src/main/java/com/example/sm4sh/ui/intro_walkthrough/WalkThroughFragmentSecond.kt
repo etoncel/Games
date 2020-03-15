@@ -9,11 +9,14 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import com.example.sm4sh.R
+import com.example.sm4sh.domain.WalkThroughUseCase
 import kotlinx.android.synthetic.main.fragment_walkthrough_first.*
 import kotlinx.android.synthetic.main.fragment_walkthrough_second.*
 
 
 class WalkThroughFragmentSecond : Fragment() {
+
+    private val walkThroughUseCase = WalkThroughUseCase()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +30,7 @@ class WalkThroughFragmentSecond : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         walkThroughFragmentSecondNextButton.setOnClickListener{
-            findNavController().navigate(R.id.next_action)
+           walkThroughUseCase.goToNextSlide(this)
         }
     }
 
