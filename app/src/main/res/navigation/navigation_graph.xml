@@ -10,7 +10,7 @@
         android:label="fragment_walkthrough_first"
         tools:layout="@layout/fragment_walkthrough_first">
         <action
-            android:id="@+id/action_walkThroughFragmentFirst2_to_walkThroughFragmentSecond"
+            android:id="@+id/next_action"
             app:destination="@id/walkThroughFragmentSecond" />
     </fragment>
     <fragment
@@ -19,7 +19,7 @@
         android:label="fragment_walkthrough_second"
         tools:layout="@layout/fragment_walkthrough_second" >
         <action
-            android:id="@+id/action_walkThroughFragmentSecond_to_walkThroughFragmentThird"
+            android:id="@+id/next_action"
             app:destination="@id/walkThroughFragmentThird" />
     </fragment>
     <fragment

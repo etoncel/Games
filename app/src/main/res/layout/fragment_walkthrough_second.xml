@@ -15,7 +15,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0.65"
+        android:scaleType="fitXY"
         android:src="@drawable/second_walkthrough_character"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/walkThroughFragmentSecondTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +57,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/walkThroughFragmentSecondNextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintWidth_percent="0.4"
