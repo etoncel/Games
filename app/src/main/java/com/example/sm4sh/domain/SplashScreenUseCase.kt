@@ -39,6 +39,7 @@ class SplashScreenUseCase {
     private fun closeSplashSreen(mainActivity: MainActivity) {
         // Set the original activity layout
         showStatusBarAfterSplashScreen(mainActivity)
+        mainActivity.setTheme(R.style.AppTheme)
         mainActivity.setContentView(R.layout.activity_main)
     }
 }
