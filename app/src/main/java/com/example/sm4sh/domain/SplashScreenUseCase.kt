@@ -9,7 +9,7 @@ import com.example.sm4sh.R
 class SplashScreenUseCase {
 
 
-    private val splashTime = 2500L
+    private val splashTime = 500L // TODO RETORNAR A 2500L
     private val walkThroughUseCase = WalkThroughUseCase()
 
     private fun hideStatusBarDuringSplashScreen(activity: AppCompatActivity){

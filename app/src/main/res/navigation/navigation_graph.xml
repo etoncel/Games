@@ -29,7 +29,8 @@
         tools:layout="@layout/fragment_walkthrough_third" >
         <action
             android:id="@+id/next_action"
-            app:destination="@id/gamesFragment" />
+            app:destination="@id/gamesFragment"
+            app:popUpTo="@+id/navigation_graph" />
     </fragment>
     <fragment
         android:id="@+id/gamesFragment"
@@ -46,6 +47,7 @@
             app:destination="@id/walkThroughFragmentFirst" />
         <action
             android:id="@+id/splash_to_games_action"
-            app:destination="@id/gamesFragment" />
+            app:destination="@id/gamesFragment"
+            app:popUpTo="@+id/navigation_graph" />
     </fragment>
 </navigation>
