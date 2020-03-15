@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/walkThroughFragmentFirst">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/walkThroughFragmentFirst"
         android:name="com.example.sm4sh.ui.intro_walkthrough.WalkThroughFragmentFirst"
@@ -36,4 +36,16 @@
         android:name="com.example.sm4sh.ui.GamesFragment"
         android:label="fragment_games"
         tools:layout="@layout/fragment_games" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.sm4sh.ui.intro_walkthrough.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/splash_to_walkThrough_action"
+            app:destination="@id/walkThroughFragmentFirst" />
+        <action
+            android:id="@+id/splash_to_games_action"
+            app:destination="@id/gamesFragment" />
+    </fragment>
 </navigation>
