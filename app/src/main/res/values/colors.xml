@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorButtonOutline">#DB3069</color>
+    <color name="colorGameCardColorBorder">#EAEAEA</color>
+    <color name="colorGameCardColorFill">#FBFBFB</color>
 </resources>
