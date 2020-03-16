@@ -16,6 +16,7 @@ import kotlin.math.roundToInt
 
 class GamesPopularAdapter(val context: Context, val list: List<Game>) : Adapter<GamesPopularAdapter.GameItemViewHolder>() {
 
+    private var filteredList:ArrayList<Game>? = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameItemViewHolder {
         val context = parent.context
@@ -32,11 +33,27 @@ class GamesPopularAdapter(val context: Context, val list: List<Game>) : Adapter<
     }
 
     override fun getItemCount(): Int {
-        return list.size - 1
+        if (filteredList != null){
+            return filteredList!!.size
+        }
+        return list.size
     }
 
     override fun onBindViewHolder(holder: GameItemViewHolder, position: Int) {
-        holder.bind(list[position])
+        if (filteredList != null){
+            holder.bind(filteredList!![position])
+        }else {
+            holder.bind(list[position])
+        }
+    }
+
+    fun filterByUniverse(universe:String){
+        if (universe == "All"){
+            filteredList = null
+        }else{
+            filteredList = ArrayList(list.filter { it.universe == universe })
+        }
+        notifyDataSetChanged()
     }
 
 

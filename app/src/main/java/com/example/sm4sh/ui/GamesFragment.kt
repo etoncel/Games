@@ -36,7 +36,10 @@ class GamesFragment : Fragment() {
             gamesAdapter = GamesAdapter(context, list)
 
             games_list_filter_recyclerView.adapter = GamesUniversesAdapter(context, list){ universe ->
-                    gamesAdapter.filterByUniverse(universe.name)
+                newGamesAdapter.filterByUniverse(universe.name)
+                popularGamesAdapter.filterByUniverse(universe.name)
+                gamesAdapter.filterByUniverse(universe.name)
+
             }
 
             games_list_new_recyclerView.adapter = newGamesAdapter
