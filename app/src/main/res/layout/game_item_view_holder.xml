@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/gameCardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.7"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        app:cardBackgroundColor="@color/colorGameCardColorFill"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardElevation="1dp"
+        app:strokeColor="@color/colorGameCardColorBorder"
+        app:strokeWidth="1dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/gameImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:src="@drawable/third_walkthrough_character" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/gameNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/gameCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text= "Game Name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/gameUniverseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textAllCaps="true"
+        app:layout_constraintTop_toBottomOf="@id/gameNameTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Game Universe"
+        />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,5 +8,6 @@
     <string name="walkthrough_button_text_start">Get Started</string>
     <string name="third_intro_fragment_message">Real-time\nupdates</string>
     <string name="second_intro_fragment_message">Know the title\nis worth gaming</string>
+    <string name="games_toolbar_title">Games</string>
 
 </resources>
