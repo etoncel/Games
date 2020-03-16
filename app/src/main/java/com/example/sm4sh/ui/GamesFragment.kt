@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sm4sh.R
 import kotlinx.android.synthetic.main.fragment_games.*
 import com.example.sm4sh.data.server.Response
@@ -27,13 +28,17 @@ class GamesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        val gridLayoutManager = GridLayoutManager(context, 2)
+//        gridLayoutManager.isAutoMeasureEnabled = true
+//        games_list_recyclerView.isNestedScrollingEnabled = true
+
         val response = Response()
         response.getGamesList { list ->
             val context = activity!!.applicationContext
 
-            newGamesAdapter = GamesNewAdapter(context, getNewGames(list))
-            popularGamesAdapter =  GamesPopularAdapter(context, list.filter { game -> game.popular })
-            gamesAdapter = GamesAdapter(context, list)
+            newGamesAdapter = GamesNewAdapter(context, newGamesLayout, getNewGames(list))
+            popularGamesAdapter =  GamesPopularAdapter(context, popularGamesLayout, list.filter { game -> game.popular })
+            gamesAdapter = GamesAdapter(context, allGamesLayout ,list)
 
             games_list_filter_recyclerView.adapter = GamesUniversesAdapter(context, list){ universe ->
                 newGamesAdapter.filterByUniverse(universe.name)

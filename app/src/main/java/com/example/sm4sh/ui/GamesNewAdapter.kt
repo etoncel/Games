@@ -3,6 +3,8 @@ package com.example.sm4sh.ui
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
@@ -14,7 +16,7 @@ import com.example.sm4sh.model.Game
 import com.example.sm4sh.ui.utils.UIUtils
 import kotlin.math.roundToInt
 
-class GamesNewAdapter(val context: Context, private val list: List<Game>) : Adapter<GamesNewAdapter.GameItemViewHolder>() {
+class GamesNewAdapter(val context: Context, private val parentLayout:View, private val list: List<Game>) : Adapter<GamesNewAdapter.GameItemViewHolder>() {
 
 
     private var filteredList:ArrayList<Game>? = ArrayList()
@@ -51,10 +53,21 @@ class GamesNewAdapter(val context: Context, private val list: List<Game>) : Adap
     fun filterByUniverse(universe:String){
         if (universe == "All"){
             filteredList = null
+            setGamesTitleCount(list.size)
+            parentLayout.visibility = VISIBLE
         }else{
             filteredList = ArrayList(list.filter { it.universe == universe })
+            setGamesTitleCount(filteredList!!.size)
+            if (filteredList!!.isEmpty()){
+                parentLayout.visibility = GONE
+            }
         }
         notifyDataSetChanged()
+    }
+
+    private fun setGamesTitleCount(count:Int){
+        val title = parentLayout.findViewById<AppCompatTextView>(R.id.newGamesTitle)
+        title.text = "New ($count)"
     }
 
 

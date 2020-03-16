@@ -14,7 +14,7 @@ import com.example.sm4sh.model.Game
 import com.example.sm4sh.ui.utils.UIUtils
 import kotlin.math.roundToInt
 
-class GamesAdapter(val context: Context, private val list: List<Game>) : Adapter<GamesAdapter.GameItemViewHolder>() {
+class GamesAdapter(val context: Context, private val parentLayout:View, private val list: List<Game>) : Adapter<GamesAdapter.GameItemViewHolder>() {
 
 
     private var filteredList = ArrayList<Game>()
@@ -47,10 +47,17 @@ class GamesAdapter(val context: Context, private val list: List<Game>) : Adapter
     fun filterByUniverse(universe:String){
         if (universe == "All"){
             filteredList.clear()
+            setGamesTitleCount(list.size)
         }else{
             filteredList = ArrayList(list.filter { it.universe == universe })
+            setGamesTitleCount(filteredList.size)
         }
         notifyDataSetChanged()
+    }
+
+    private fun setGamesTitleCount(count:Int){
+        val title = parentLayout.findViewById<AppCompatTextView>(R.id.allGamesTitle)
+        title.text = "All ($count)"
     }
 
 
