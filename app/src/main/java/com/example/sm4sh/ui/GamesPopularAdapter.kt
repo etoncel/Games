@@ -14,15 +14,19 @@ import com.example.sm4sh.model.Game
 import com.example.sm4sh.ui.utils.UIUtils
 import kotlin.math.roundToInt
 
-class GamesAdapter(val context: Context, val list: List<Game>) : Adapter<GamesAdapter.GameItemViewHolder>() {
+class GamesPopularAdapter(val context: Context, val list: List<Game>) : Adapter<GamesPopularAdapter.GameItemViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameItemViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.game_item_view_holder, parent,false)
+        val view = inflater.inflate(R.layout.game_item_popular_view_holder, parent,false)
+
         val params = view.layoutParams
-        params.height = (UIUtils.getScreenSizeMaxDimension(context) * 0.25).roundToInt()
+        val dimenWidth = (UIUtils.getScreenSizeMaxDimension(context) * 0.14).roundToInt()
+        val dimenHeight = (UIUtils.getScreenSizeMaxDimension(context) * 0.25).roundToInt()
+        params.height = dimenHeight
+        params.width = dimenWidth
 
         return GameItemViewHolder(view)
     }

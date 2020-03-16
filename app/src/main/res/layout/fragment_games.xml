@@ -40,6 +40,9 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/games_list_filter_recyclerView"
         android:layout_width="match_parent"
@@ -50,13 +53,49 @@
         android:orientation="horizontal"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/games_list_recyclerView"
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        />
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/games_list_new_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/games_list_popular_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/games_list_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

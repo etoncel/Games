@@ -7,19 +7,14 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sm4sh.R
 import com.example.sm4sh.model.Game
-import com.example.sm4sh.ui.utils.UIUtils
-import kotlinx.android.synthetic.main.game_universe_view_holder.view.*
-import kotlin.math.roundToInt
 
-class GamesUniversesAdapter(var list:List<Game>):
+class GamesUniversesAdapter(list:List<Game>):
     RecyclerView.Adapter<GamesUniversesAdapter.GamesUniversesItemViewHolder>() {
 
 
     private val newList = ArrayList<String>()
 
     init {
-
-
         for (game in list) {
             if (!newList.contains(game.universe)){
                 newList.add(game.universe)
@@ -43,10 +38,15 @@ class GamesUniversesAdapter(var list:List<Game>):
     }
 
     override fun onBindViewHolder(holder: GamesUniversesItemViewHolder, position: Int) {
-        holder.button.text = newList[position]
+        holder.bind(newList[position])
     }
 
     inner class GamesUniversesItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val button:AppCompatButton = itemView.findViewById(R.id.universeButton)
+        private val button:AppCompatButton = itemView.findViewById(R.id.universeButton)
+
+
+        fun bind(universeName: String) {
+            button.text = universeName
+        }
     }
 }
