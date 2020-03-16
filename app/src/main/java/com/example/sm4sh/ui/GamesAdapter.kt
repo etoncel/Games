@@ -1,5 +1,6 @@
 package com.example.sm4sh.ui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,10 +8,15 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.sm4sh.R
+import com.example.sm4sh.model.Game
 import com.example.sm4sh.ui.utils.UIUtils
 import kotlin.math.roundToInt
 
-class GamesAdapter : Adapter<GamesAdapter.GameItemViewHolder>() {
+class GamesAdapter(val context: Context, val list: List<Game>) : Adapter<GamesAdapter.GameItemViewHolder>() {
+
+
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameItemViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
@@ -22,12 +28,12 @@ class GamesAdapter : Adapter<GamesAdapter.GameItemViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return list.size
     }
 
     override fun onBindViewHolder(holder: GameItemViewHolder, position: Int) {
-        holder.gameNameTv.text = "Game Name"
-        holder.gameUniverseTv.text = "Game Universe"
+        holder.gameNameTv.text = list[position].name
+        holder.gameUniverseTv.text = list[position].universe
     }
 
 
