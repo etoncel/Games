@@ -9,25 +9,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sm4sh.R
 import com.example.sm4sh.model.Game
 
-class GamesUniversesAdapter(val context: Context, list:List<Game>):
+class GamesUniversesAdapter(
+    val context: Context,
+    list: List<Game>,
+    val completion: (universe: GamesUniversesAdapter.GameUniverse) -> Unit
+) :
     RecyclerView.Adapter<GamesUniversesAdapter.GamesUniversesItemViewHolder>() {
 
     data class GameUniverse(
-        val name:String,
-        var highLighted:Boolean = false
+        val name: String,
+        var highLighted: Boolean = false
     )
+
     private val newList = ArrayList<GameUniverse>()
 
     init {
         val tempList = ArrayList<String>()
         for (game in list) {
-            if (!tempList.contains(game.universe)){
+            if (!tempList.contains(game.universe)) {
                 if (game.universe != null)
                 tempList.add(game.universe)
             }
         }
 
-        for (universe in tempList){
+        for (universe in tempList) {
             newList.add(GameUniverse(universe))
         }
     }
@@ -38,7 +43,7 @@ class GamesUniversesAdapter(val context: Context, list:List<Game>):
     ): GamesUniversesItemViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.game_universe_view_holder, parent,false)
+        val view = inflater.inflate(R.layout.game_universe_view_holder, parent, false)
 
         return GamesUniversesItemViewHolder(view)
     }
@@ -51,8 +56,9 @@ class GamesUniversesAdapter(val context: Context, list:List<Game>):
         holder.bind(newList[position], position)
     }
 
-    inner class GamesUniversesItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        private val button:AppCompatButton = itemView.findViewById(R.id.universeButton)
+    inner class GamesUniversesItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+        private val button: AppCompatButton = itemView.findViewById(R.id.universeButton)
         private var isHighLighted = false
         private var pos = 0
 
@@ -69,24 +75,29 @@ class GamesUniversesAdapter(val context: Context, list:List<Game>):
 
         override fun onClick(v: View?) {
             print("clicked")
-            if (!isHighLighted){
+            if (!isHighLighted) {
                 unhighlightAllButtons(pos)
             }
         }
 
-        private fun highLightButton(){
+        private fun highLightButton() {
             if (isHighLighted) {
                 button.setTextColor(context.resources.getColor(R.color.colorPrimaryDark))
                 button.setBackgroundColor(context.resources.getColor(R.color.colorButtonOutline))
-            }else{
+                filterGamesListByUniverse(newList[pos])
+            } else {
                 button.setTextColor(context.resources.getColor(R.color.colorButtonOutline))
                 button.setBackgroundColor(context.resources.getColor(R.color.colorPrimaryDark))
             }
         }
+
+        private fun filterGamesListByUniverse(gameUniverse: GamesUniversesAdapter.GameUniverse) {
+            completion(gameUniverse)
+        }
     }
 
-    private fun unhighlightAllButtons(pos:Int) {
-        for (universe in newList){
+    private fun unhighlightAllButtons(pos: Int) {
+        for (universe in newList) {
             universe.highLighted = false
         }
         newList[pos].highLighted = true

@@ -14,6 +14,9 @@ import com.example.sm4sh.model.Game
 // Show the games List
 class GamesFragment : Fragment() {
 
+    lateinit  var newGamesAdapter:GamesNewAdapter
+    lateinit var popularGamesAdapter:GamesPopularAdapter
+    lateinit var gamesAdapter: GamesAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,18 +28,22 @@ class GamesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val response = Response()
-        response.getGamesList {
+        response.getGamesList { list ->
             val context = activity!!.applicationContext
 
-            games_list_filter_recyclerView.adapter = GamesUniversesAdapter(context, it)
+            newGamesAdapter = GamesNewAdapter(context, getNewGames(list))
+            popularGamesAdapter =  GamesPopularAdapter(context, list.filter { game -> game.popular })
+            gamesAdapter = GamesAdapter(context, list)
 
-            games_list_new_recyclerView.adapter = GamesNewAdapter(context, getNewGames(it))
+            games_list_filter_recyclerView.adapter = GamesUniversesAdapter(context, list){ universe ->
+                    gamesAdapter.filterByUniverse(universe.name)
+            }
 
-            games_list_popular_recyclerView.adapter =
-                GamesPopularAdapter(context, it.filter { game -> game.popular })
+            games_list_new_recyclerView.adapter = newGamesAdapter
 
-            val adapter = GamesAdapter(context, it)
-            games_list_recyclerView.adapter = adapter
+            games_list_popular_recyclerView.adapter = popularGamesAdapter
+
+            games_list_recyclerView.adapter = gamesAdapter
         }
 
     }

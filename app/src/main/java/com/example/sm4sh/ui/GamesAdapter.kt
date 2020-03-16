@@ -14,8 +14,10 @@ import com.example.sm4sh.model.Game
 import com.example.sm4sh.ui.utils.UIUtils
 import kotlin.math.roundToInt
 
-class GamesAdapter(val context: Context, val list: List<Game>) : Adapter<GamesAdapter.GameItemViewHolder>() {
+class GamesAdapter(val context: Context, private val list: List<Game>) : Adapter<GamesAdapter.GameItemViewHolder>() {
 
+
+    private var filteredList:List<Game> = ArrayList<Game>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameItemViewHolder {
         val context = parent.context
@@ -28,11 +30,23 @@ class GamesAdapter(val context: Context, val list: List<Game>) : Adapter<GamesAd
     }
 
     override fun getItemCount(): Int {
-        return list.size - 1
+        if (filteredList.isNotEmpty()){
+            return filteredList.size
+        }
+        return list.size
     }
 
     override fun onBindViewHolder(holder: GameItemViewHolder, position: Int) {
-        holder.bind(list[position])
+        if (filteredList.isNotEmpty()){
+            holder.bind(filteredList[position])
+        }else {
+            holder.bind(list[position])
+        }
+    }
+
+    fun filterByUniverse(universe:String){
+        filteredList = list.filter { it.universe == universe }
+        notifyDataSetChanged()
     }
 
 
