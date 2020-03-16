@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:text="Universe"
         android:textAllCaps="false"
+        android:padding="4dp"
         app:fontFamily="@font/helvetica_neue"
         android:textColor="@color/colorButtonOutline"
         android:background="@android:color/white"

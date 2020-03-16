@@ -26,24 +26,18 @@ class GamesFragment : Fragment() {
 
         val response = Response()
         response.getGamesList {
-            games_list_filter_recyclerView.adapter = GamesUniversesAdapter(it)
-
             val context = activity!!.applicationContext
 
-            for (game in it){
-                Log.d("sorted" ,"original: " + game.createdAt )
-            }
+            games_list_filter_recyclerView.adapter = GamesUniversesAdapter(context, it)
 
             games_list_new_recyclerView.adapter = GamesNewAdapter(context, getNewGames(it))
 
             games_list_popular_recyclerView.adapter =
-                GamesPopularAdapter(context, it.filter { it.popular })
+                GamesPopularAdapter(context, it.filter { game -> game.popular })
 
             val adapter = GamesAdapter(context, it)
             games_list_recyclerView.adapter = adapter
         }
-
-
 
     }
 
