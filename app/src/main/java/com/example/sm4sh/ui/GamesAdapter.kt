@@ -17,7 +17,7 @@ import kotlin.math.roundToInt
 class GamesAdapter(val context: Context, private val list: List<Game>) : Adapter<GamesAdapter.GameItemViewHolder>() {
 
 
-    private var filteredList:List<Game> = ArrayList<Game>()
+    private var filteredList = ArrayList<Game>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameItemViewHolder {
         val context = parent.context
@@ -45,7 +45,11 @@ class GamesAdapter(val context: Context, private val list: List<Game>) : Adapter
     }
 
     fun filterByUniverse(universe:String){
-        filteredList = list.filter { it.universe == universe }
+        if (universe == "All"){
+            filteredList.clear()
+        }else{
+            filteredList = ArrayList(list.filter { it.universe == universe })
+        }
         notifyDataSetChanged()
     }
 

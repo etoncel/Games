@@ -12,7 +12,7 @@ import com.example.sm4sh.model.Game
 class GamesUniversesAdapter(
     val context: Context,
     list: List<Game>,
-    val completion: (universe: GamesUniversesAdapter.GameUniverse) -> Unit
+    val completion: (universe: GameUniverse) -> Unit
 ) :
     RecyclerView.Adapter<GamesUniversesAdapter.GamesUniversesItemViewHolder>() {
 
@@ -31,6 +31,8 @@ class GamesUniversesAdapter(
                 tempList.add(game.universe)
             }
         }
+
+        newList.add(GameUniverse("All", true))
 
         for (universe in tempList) {
             newList.add(GameUniverse(universe))
@@ -66,6 +68,7 @@ class GamesUniversesAdapter(
             button.setOnClickListener(this)
         }
 
+
         fun bind(universe: GameUniverse, position: Int) {
             pos = position
             button.text = universe.name
@@ -91,7 +94,7 @@ class GamesUniversesAdapter(
             }
         }
 
-        private fun filterGamesListByUniverse(gameUniverse: GamesUniversesAdapter.GameUniverse) {
+        private fun filterGamesListByUniverse(gameUniverse: GameUniverse) {
             completion(gameUniverse)
         }
     }
