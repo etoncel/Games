@@ -41,6 +41,14 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/games_list_filter_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/games_list_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

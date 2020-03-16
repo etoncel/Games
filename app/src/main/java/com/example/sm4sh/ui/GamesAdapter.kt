@@ -28,7 +28,7 @@ class GamesAdapter(val context: Context, val list: List<Game>) : Adapter<GamesAd
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list.size - 1
     }
 
     override fun onBindViewHolder(holder: GameItemViewHolder, position: Int) {
