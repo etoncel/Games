@@ -26,7 +26,7 @@ class GamesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         val response = Response()
         response.getGamesList {
             games_list_filter_recyclerView.adapter = GamesUniversesAdapter(it)

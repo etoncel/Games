@@ -43,7 +43,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/games_list_filter_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal"
         />
