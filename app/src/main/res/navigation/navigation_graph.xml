@@ -36,7 +36,11 @@
         android:id="@+id/gamesFragment"
         android:name="com.example.sm4sh.ui.GamesFragment"
         android:label="fragment_games"
-        tools:layout="@layout/fragment_games" />
+        tools:layout="@layout/fragment_games" >
+        <action
+            android:id="@+id/games_list_to_details_action"
+            app:destination="@id/gameDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.sm4sh.ui.intro_walkthrough.SplashFragment"
@@ -50,4 +54,9 @@
             app:destination="@id/gamesFragment"
             app:popUpTo="@+id/navigation_graph" />
     </fragment>
+    <fragment
+        android:id="@+id/gameDetailsFragment"
+        android:name="com.example.sm4sh.ui.GameDetailsFragment"
+        android:label="fragment_game_details"
+        tools:layout="@layout/fragment_game_details" />
 </navigation>

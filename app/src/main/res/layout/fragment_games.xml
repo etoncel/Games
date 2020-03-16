@@ -46,6 +46,8 @@
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        tools:itemCount="10"
+        tools:listitem="@layout/game_universe_view_holder"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal"
         />
@@ -103,6 +105,8 @@
                     android:layout_marginLeft="16dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/game_item_new_view_holder"
                     />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -149,6 +153,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
+                    tools:listitem="@layout/game_item_popular_view_holder"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal"
                     />
@@ -197,6 +202,8 @@
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/game_item_view_holder"
                     />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

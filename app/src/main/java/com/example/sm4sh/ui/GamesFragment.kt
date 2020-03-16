@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sm4sh.R
 import kotlinx.android.synthetic.main.fragment_games.*
@@ -38,7 +39,9 @@ class GamesFragment : Fragment() {
 
             newGamesAdapter = GamesNewAdapter(context, newGamesLayout, getNewGames(list))
             popularGamesAdapter =  GamesPopularAdapter(context, popularGamesLayout, list.filter { game -> game.popular })
-            gamesAdapter = GamesAdapter(context, allGamesLayout ,list)
+            gamesAdapter = GamesAdapter(context, allGamesLayout ,list){
+                findNavController().navigate(R.id.games_list_to_details_action)
+            }
 
             games_list_filter_recyclerView.adapter = GamesUniversesAdapter(context, list){ universe ->
                 newGamesAdapter.filterByUniverse(universe.name)
