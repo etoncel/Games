@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,8 @@ import com.example.sm4sh.model.Game
 import com.example.sm4sh.ui.utils.UIUtils
 import kotlin.math.roundToInt
 
-class GamesAdapter(val context: Context, private val parentLayout:View, private val list: List<Game>) : Adapter<GamesAdapter.GameItemViewHolder>() {
+class GamesAdapter(val context: Context, private val parentLayout:View, private val list: List<Game>,
+                   val clickedItem:(game:Game) -> Unit) : Adapter<GamesAdapter.GameItemViewHolder>() {
 
 
     private var filteredList = ArrayList<Game>()
@@ -37,6 +39,7 @@ class GamesAdapter(val context: Context, private val parentLayout:View, private 
     }
 
     override fun onBindViewHolder(holder: GameItemViewHolder, position: Int) {
+        holder.pos = position
         if (filteredList.isNotEmpty()){
             holder.bind(filteredList[position])
         }else {
@@ -61,17 +64,23 @@ class GamesAdapter(val context: Context, private val parentLayout:View, private 
     }
 
 
-    inner class GameItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class GameItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         private val gameImage:AppCompatImageView = itemView.findViewById(R.id.gameImageView)
         private val gameNameTv:AppCompatTextView = itemView.findViewById(R.id.gameNameTextView)
         private val gameUniverseTv:AppCompatTextView = itemView.findViewById(R.id.gameUniverseTextView)
+        var pos = 0
 
         fun bind(game:Game){
+            itemView.setOnClickListener(this)
             gameNameTv.text = game.name
             gameUniverseTv.text = game.universe
             Glide.with(context).load(game.imageURL)
                 .into(gameImage)
+        }
+
+        override fun onClick(v: View?) {
+            clickedItem(list[pos])
         }
 
     }
